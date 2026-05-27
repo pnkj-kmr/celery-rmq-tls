@@ -1,0 +1,20 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: celery-rmq-tls
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: celery
+      RABBITMQ_DEFAULT_PASS: celerypass
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "5671:5671"
+      - "15671:15671"
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+      - ./certs:/etc/rabbitmq/certs:ro
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12

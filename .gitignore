@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# Project
+.env
+docker/certs/*
+!docker/certs/.gitkeep
+result/*
+!result/.gitkeep
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+result/
+.pytest_cache
+tmp
+docs/superpowers/
